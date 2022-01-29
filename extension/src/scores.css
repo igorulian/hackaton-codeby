@@ -1,0 +1,7 @@
+.score {
+    border: 2px solid red;
+    display: block;
+    border-radius: 50%;
+    width: max-content;
+    padding: 0.4rem;
+}

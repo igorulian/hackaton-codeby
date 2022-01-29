@@ -6,7 +6,8 @@
     "content_scripts": [
         {
           "matches": ["https://www.google.com/search*","http://www.google.com/search*"],
-          "js": ["src/background.js"]
+          "js": ["src/background.js"],
+          "css" : ["src/scores.css"]
         }
     ],
     "permissions": ["storage","activeTab", "scripting", "tabs"],

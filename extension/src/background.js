@@ -1,21 +1,18 @@
-const loadingElement = `
-  <div>
-    <p> loading </p>
-  </div>
-`; // verificar se possui libras, vendo de tem 	https://vlibras.gov.br no innertml da página
+
+// verificar se possui libras, vendo de tem 	https://vlibras.gov.br no innertml da página
 
 // daltonismo
 // libras
 // se tem zoom, alguma coisa coisa
 
 function start() {
-  const scores = [4.1, 0, 4.2, 3, 4, 5, 6.1]; //Será retornado do fetch
-  const links = getPageLinks();
+  const scores = [1.1,2.2,3.3,4.4,5.5,6.6,7.7,8.8,9.9]; //Será retornado do fetch
   // const scores = links.for
-  const headers = document.querySelectorAll("a h3");
-  const scoresMounted = mountScore(scores);
-  insertScore(headers, scoresMounted);
-  getScore();
+  const headers = document.querySelectorAll("a h3, a [aria-level='3']");
+  const links = getPageLinks(headers);
+  const scoresMounted = mountScores(scores);
+  insertScores(headers, scoresMounted);
+  // getScore();
 }
 
 async function getScore() {
@@ -52,28 +49,29 @@ async function getScore() {
   }
 }
 
-function getPageLinks() {
-  const links = document.querySelectorAll("a h3");
-  return links.forEach((link) => {
-    if (!link) return;
-
-    const url = link.parentElement.href;
-
-    if (!url) return;
-  });
+function getPageLinks(headers) {
+  return headers.forEach(link => getParentNodeLink(link));
 }
 
-function insertScore(headers, ranks) {
-  for (let index = 0; index < ranks.length; index++) {
-    headers[index].innerHTML += ranks[index];
+function getParentNodeLink(link) {
+  if(link.parentNode.localName == "a") {
+    return link.parentNode
+  } else {
+    getParentNodeLink(link.parentNode)
   }
 }
 
-function mountScore(scores) {
-  scores.forEach((score) => {
-    `<span aria-label="score-${score}" class="score">${score}</span>`;
+function insertScores(headers, scores) {
+  for (let index = 0; index < scores.length; index++) {
+    headers[index].parentNode.innerHTML += scores[index];
+  }
+}
+
+function mountScores(scoresMounted) {
+  return scoresMounted.map((score) => {
+    const scoreSpan = `<div aria-label="avaliação dessa página é ${score}" class="score">${score}</div>`;
+    return scoreSpan
   });
-  return scores
 }
 
 start();
