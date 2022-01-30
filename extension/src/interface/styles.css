@@ -20,6 +20,7 @@ button.current {
 
 .logo{
     width: 79px;
+    margin-left: -10px;
 }
 
 .content-extension--header{
@@ -28,6 +29,11 @@ button.current {
     align-items: center;
     border-bottom: 1px solid #0000004a;
 }
+
+.content-icons-description {
+    margin: 10px 0px;
+}
+
 .auditivo{
     width: 71px;
 }
@@ -43,5 +49,13 @@ button.current {
     width: 75px;
 }
 
+.item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
 
-
+.item p{
+    margin-left: 11px;
+    font-size: 16px;
+}
