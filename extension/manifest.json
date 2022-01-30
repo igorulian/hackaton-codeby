@@ -1,6 +1,6 @@
 {
-    "name": "Uranianos",
-    "description": "Uniraianos Description :)",
+    "name": "ShowMyAcess",
+    "description": "Extensão feita para facilitar sua vida",
     "version": "1.0",
     "manifest_version": 3,
     "content_scripts": [

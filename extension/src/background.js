@@ -50,7 +50,7 @@ function mountScores(element, score) {
     if(imageDescription)
       element.parentElement.parentElement.querySelector('.accessibilityContainer').insertAdjacentHTML('beforeend', imageDescriptionSpan)
   
-    if(KeyBoardNavigationSpan)
+    if(!KeyBoardNavigationSpan) // acho que ! é melhor n sei to com sono
       element.parentElement.parentElement.querySelector('.accessibilityContainer').insertAdjacentHTML('beforeend', KeyBoardNavigationSpan)
 }
 
