@@ -34,25 +34,16 @@ button.current {
     margin: 10px 0px;
 }
 
-.auditivo{
-    width: 71px;
-}
-.daltonicos{
-    width: 74px;
-}
-
-.visual{
-    width: 76px;
-}
-
-.teclado{
-    width: 75px;
-}
-
 .item{
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
+}
+
+.item img {
+    width: 74px;
+    height: 74px;
+    align-self: center;
 }
 
 .item p{
