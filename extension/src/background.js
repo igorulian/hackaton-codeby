@@ -33,13 +33,28 @@ function getParentNodeLink(element) {
 }
 
 function mountScores(element, score) {
-    const scoreSpan = `<div aria-label="avaliação dessa página é ${score.imageDescription}" class="score">${score.imageDescription}</div>`
-    element.parentElement.parentElement.insertAdjacentHTML('beforeend', scoreSpan)
+    const container = `<div class="accessibilityContainer" style="display: flex; align-items: cemter;" aria-label="Container dos selos de acessibilidade"> </div>`
+    element.parentElement.parentElement.insertAdjacentHTML('beforeend', container)
+    const {libras, colorblind, imageDescription, checkKeyBoardNavigation} = score
+    const librasSpan = `<div aria-label="Essa página possui suporte para libras" class="score"> Libras </div>`
+    const colorblindSpan = `<div aria-label="Essa página possui suporte para daltonismo" class="score"> Dantonismo </div>`
+    const imageDescriptionSpan = `<div aria-label="Essa página possui descrição de imagens" class="score"> Descrição imagem </div>`
+    const KeyBoardNavigationSpan = `<div aria-label="Essa página possui navegação por teclado" class="score"> Navegação por teclado </div>`
+    
+    if(libras)
+      element.parentElement.parentElement.querySelector('.accessibilityContainer').insertAdjacentHTML('beforeend', librasSpan)
+    
+    if(colorblind)
+      element.parentElement.parentElement.querySelector('.accessibilityContainer').insertAdjacentHTML('beforeend', colorblindSpan)
+  
+    if(imageDescription)
+      element.parentElement.parentElement.querySelector('.accessibilityContainer').insertAdjacentHTML('beforeend', imageDescriptionSpan)
+  
+    if(KeyBoardNavigationSpan)
+      element.parentElement.parentElement.querySelector('.accessibilityContainer').insertAdjacentHTML('beforeend', KeyBoardNavigationSpan)
 }
 
 async function getAccesilibityData(site){
-  console.log('site')
-  console.log(site)
   // const url = 'http://localhost:3000/api/accessibility'
   const url = 'https://hackaton-uranianos.herokuapp.com/api/accessibility'
 
@@ -55,7 +70,6 @@ async function getAccesilibityData(site){
       })
     })
     const data = await response.json()
-    console.log(data)
     return data
   }catch{
     console.log("Erro ao buscar data")
