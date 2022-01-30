@@ -6,10 +6,11 @@
 // se tem zoom, alguma coisa coisa
 
 function start() {
-  const scores = [1.1,2.2,3.3,4.4,5.5,6.6,7.7,8.8,9.9]; //Será retornado do fetch
+  const scores = [1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9]; //Será retornado do fetch
   // const scores = links.for
   const headers = document.querySelectorAll("a h3, a [aria-level='3']");
   const links = getPageLinks(headers);
+  console.log("links", links)
   const scoresMounted = mountScores(scores);
   insertScores(headers, scoresMounted);
   // getScore();
@@ -50,12 +51,16 @@ async function getScore() {
 }
 
 function getPageLinks(headers) {
-  return headers.forEach(link => getParentNodeLink(link));
+  const links = []
+  headers.forEach(header => {
+    links.push(getParentNodeLink(header))
+  });
+  return links
 }
 
 function getParentNodeLink(link) {
-  if(link.parentNode.localName == "a") {
-    return link.parentNode
+  if (link.parentNode.localName == "a") {
+    return link.parentNode.href
   } else {
     getParentNodeLink(link.parentNode)
   }
