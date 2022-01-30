@@ -1,30 +1,17 @@
 async function start() {
-  // const scores = links.for
   const headers = document.querySelectorAll("a h3, a [aria-level='3']")
-  const links = getPageLinks(headers)
-  /*   const scores = await Promise.all(links.forEach(async link => {
-      if(link === undefined) return
-      return await getScore(link)
-    })) */
-  const scores = await getScore(links[0])
-  console.log(scores)
-  // const scoresMounted = mountScores(scores)
-  // insertScores(headers, scoresMounted)
-}
 
-async function getScore(rawurl) {
-  let site = rawurl.replace('://', '%3A%2F%2F')
-  site = site.replaceAll('/', '%2F')
+  headers.forEach(async element => {
+    if(!element || element === undefined) return
 
-  const url = `https://cors-anywhere.herokuapp.com/https://hackaton-uranianos.herokuapp.com/api/accessibility/${site}`
-  console.log("url", url)
-  try {
-    const rawResponse = await fetch(url, { method: "GET" })
-    console.log("rawResponse", rawResponse)
-    return await rawResponse.json()
-  } catch (error) {
-    console.log(error)
-  }
+    const site = getParentNodeLink(element)
+    if(!site) return
+
+    const data =  await getAccesilibityData(site)
+    if(!data) return
+
+    mountScores(element, data)
+  })
 }
 
 function getPageLinks(headers) {
@@ -35,25 +22,45 @@ function getPageLinks(headers) {
   return links
 }
 
-function getParentNodeLink(link) {
-  if (link.parentNode.localName == "a") {
-    return link.parentNode.href
-  } else {
-    getParentNodeLink(link.parentNode)
+function getParentNodeLink(element) {
+  if(!element.parentElement) return
+
+  if(element.parentElement.tagName === 'A'){
+    return element.parentElement.href
+  }else{
+    return null
   }
 }
 
-function insertScores(headers, scores) {
-  for (let index = 0; index < scores.length; index++) {
-    headers[index].parentNode.innerHTML += scores[index]
-  }
+function mountScores(element, score) {
+    const scoreSpan = `<div aria-label="avaliação dessa página é ${score.imageDescription}" class="score">${score.imageDescription}</div>`
+    element.parentElement.parentElement.insertAdjacentHTML('beforeend', scoreSpan)
 }
 
-function mountScores(scoresMounted) {
-  return scoresMounted.map((score) => {
-    const scoreSpan = `<div aria-label="avaliação dessa página é ${score}" class="score">${score}</div>`
-    return scoreSpan
-  });
+async function getAccesilibityData(site){
+  console.log('site')
+  console.log(site)
+  // const url = 'http://localhost:3000/api/accessibility'
+  const url = 'https://hackaton-uranianos.herokuapp.com/api/accessibility'
+
+  try{
+    const response = await fetch(url,{
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        site: site
+      })
+    })
+    const data = await response.json()
+    console.log(data)
+    return data
+  }catch{
+    console.log("Erro ao buscar data")
+    return null
+  }
 }
 
 start()

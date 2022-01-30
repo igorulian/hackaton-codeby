@@ -3,5 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Igor Ulian <igorulian@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }
