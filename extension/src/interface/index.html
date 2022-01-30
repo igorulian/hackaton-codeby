@@ -1,9 +1,45 @@
 <html>
   <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="switch-toggle.css">
   </head>
   <body>
     <script src="interface.js"></script>
-    <button id="toggleButton"> Habilitar</button>
+
+    <div class="container-extension">
+        <div class="content-extension--header">
+          <img class="logo" src="../image/logo.png" alt="Logo da extensão">
+
+          <h1>SouInclusivo</h1>
+
+          <label aria-description="ativar ou desativar extensão do navegador" class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+      <div class="content-icons-description">
+        <div>
+          <img class="auditivo" src="../image/libras.png" alt="quando exibido o site é acessivel para pessoas com deficiencia auditiva">
+          <p></p>
+        </div>
+        <div>
+          <img class="daltonicos" src="../image/daltonismo.jpg" alt="quando exibido o site é acessível para daltônicos">
+          <p></p>
+        </div>
+        <div>
+          <img class="visual" src="../image/visual.png" alt="quando exibido o site permite navegacao pelo leitor de texto">
+          <p></p>
+        </div>
+        <div>
+          <img class="teclado" src="../image/teclado.png" alt="quando exibido o site permite navegação via teclado">
+          <p></p>
+        </div>
+      </div>
+
+      <div>
+        <p></p>
+      </div>
+    </div>
   </body>
 </html>

@@ -13,5 +13,10 @@
     "permissions": ["storage","activeTab", "scripting", "tabs"],
     "action": {
         "default_popup": "src/interface/index.html"
+    },
+    "icons": {
+        "16": "src/image/icon16.png",
+        "48": "src/image/icon48.png",
+        "128": "src/image/icon128.png"
     }
 }
