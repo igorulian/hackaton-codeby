@@ -1,7 +1,16 @@
 .score {
-    border: 2px solid red;
-    display: block;
+    /* border: 1px solid #ccc; */
+    background-color: #4baffb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    width: 40px;
+    max-width: 35px;
+    max-height: 35px;
     padding: 0.4rem;
+    margin: 0 10px;
+}
+
+.score-image {
+    max-width: 40px;
 }
