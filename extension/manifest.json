@@ -1,0 +1,22 @@
+{
+    "name": "Uranianos",
+    "description": "Uniraianos Description :)",
+    "version": "1.0",
+    "manifest_version": 3,
+    "icons": {
+      "16": "src/image/icon16.png",
+      "48": "src/image/icon48.png",
+      "128": "src/image/icon128.png"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://www.google.com/search*","http://www.google.com/search*"],
+          "js": ["src/background.js"],
+          "css" : ["src/scores.css"]
+        }
+    ],
+    "permissions": ["storage","activeTab", "scripting", "tabs"],
+    "action": {
+        "default_popup": "src/interface/index.html"
+    }
+}
