@@ -36,9 +36,9 @@ function mountScores(element, score) {
     const container = `<div class="accessibilityContainer" style="display: flex; align-items: cemter;" aria-label="Container dos selos de acessibilidade"> </div>`
     element.parentElement.parentElement.insertAdjacentHTML('beforeend', container)
     const {libras, colorblind, imageDescription, checkKeyBoardNavigation} = score
-    const librasSpan = `<div title="Essa página possui suporte para libras" aria-label="Essa página possui suporte para libras" class="score"> <img alt="Essa página possui suporte para libras" class="score-image" src="https://i.ibb.co/BNdn8gd/libras.png"/> </div>`
+    const librasSpan = `<div tabindex="0" title="Essa página possui suporte para libras" aria-label="Essa página possui suporte para libras" class="score"> <img alt="Essa página possui suporte para libras" class="score-image" src="https://i.ibb.co/BNdn8gd/libras.png"/> </div>`
     const colorblindSpan = `<div title="Essa página possui suporte para daltonismo" aria-label="Essa página possui suporte para daltonismo" class="score"> <img alt="Essa página possui suporte para daltonismo" class="score-image" src="https://i.ibb.co/28jmkW6/daltonismo.png"/> </div>`
-    const imageDescriptionSpan = `<div title="Essa página possui descrição de imagens" aria-label="Essa página possui descrição de imagens" class="score"> <img alt="Essa página possui descrição de imagens" class="score-image" src="https://i.ibb.co/cyf7jnq/visual.png"/> </div>`
+    const imageDescriptionSpan = `<div title="Essa página permite a navegação pelo leitor de texto" aria-label="Essa página permite a navegação pelo leitor de texto" class="score"> <img alt="Essa página permite a navegação pelo leitor de texto" class="score-image" src="https://i.ibb.co/cyf7jnq/visual.png"/> </div>`
     const KeyBoardNavigationSpan = `<div title="Essa página possui navegação por teclado" aria-label="Essa página possui navegação por teclado" class="score"> <img alt="Essa página possui navegação por teclado" class="score-image" src="https://i.ibb.co/zFFD86z/teclado.png"/> </div>`
     
     if(libras)
